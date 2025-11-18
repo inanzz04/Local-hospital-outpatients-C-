@@ -1,0 +1,284 @@
+Inan Zzaman W20886680
+
+Task 1 Inan Zzaman W20886680:
+
+//TASK1
+
+#include <iostream>
+#include <vector>
+#include <iomanip> // Standard for formatting output
+using namespace std;
+
+int main() {
+    // Specify the age ranges and counters for each group
+    const int ageRanges[5][2] = {
+        {0, 19},   // 0-19 years
+        {20, 39},  // 20-39 years
+        {40, 69},  // 40-69 years
+        {70, 89},  // 70-89 years
+        {90, 109}  // 90-109 years
+    };
+    int ageCounters[5] = { 0, 0, 0, 0, 0 }; // Format all counters to zero
+
+    int age;              // Variable to store user input
+    int totalCount = 0;   // Count of total ages entered
+
+    // Display instructions to the user
+    cout << "Welcome to the Mr Inan's hospital patient age histogram generator!\n";
+    cout << "Please enter the ages of outpatients (0-109).\n";
+    cout << "Enter an age greater than 109 to stop Mr Inan's generator.\n\n";
+
+    // Input loop: Read ages until an age > 109 is entered
+    while (true) {
+        cout << "Enter age for outpatient " << (totalCount + 1) << ": ";
+        cin >> age;
+
+        // Stop if age exceeds 109
+        if (age > 109) {
+            cout << "Age entry stopped.\n";
+            break;
+        }
+
+        // Validate input: Only accept non-negative ages
+        if (age < 0) {
+            cout << "Age is invalid! Please enter a non-negative value.\n";
+            continue;
+        }
+
+        // Add the appropriate counter based on the age range
+        for (int i = 0; i < 5; i++) {
+            if (age >= ageRanges[i][0] && age <= ageRanges[i][1]) {
+                ageCounters[i]++;
+                break;
+            }
+        }
+
+        totalCount++; // Add the total count
+    }
+
+    // Output the histogram
+    cout << "\nHere is the histogram of ages:\n";
+    for (int i = 0; i < 5; i++) {
+        // Display the age range
+        cout << setw(5) << ageRanges[i][0] << "-" << setw(3) << ageRanges[i][1] << ": ";
+        // Print the number of exclamation marks
+        for (int j = 0; j < ageCounters[i]; j++) {
+            cout << "!";
+        }
+        cout << endl; // Move to the next line after printing all '!' for this range
+    }
+
+    // Display the total count of ages entered
+    cout << "\nTotal number of ages entered: " << totalCount << "\n";
+    cout << "Thank you for using the program!\n";
+
+    return 0;
+}
+
+
+Task 2 Inan Zzaman W20886680:
+
+//Task 2
+#include <iostream>
+#include <vector>
+#include <iomanip> // For formatting output
+#include <limits>  // For numeric limits
+using namespace std;
+
+int main() {
+    // Specify the age ranges and counters for each group
+    const int ageRanges[5][2] = {
+        {0, 19},   // 0-19 years
+        {20, 39},  // 20-39 years
+        {40, 69},  // 40-69 years
+        {70, 89},  // 70-89 years
+        {90, 109}  // 90-109 years
+    };
+    int ageCounters[5] = { 0, 0, 0, 0, 0 }; // Format all counters to zero
+
+    int age;              // Variable to store user input
+    int totalCount = 0;   // Count of total ages entered
+    int below40Count = 0; // Count of patients below the age of 40
+    int highestAge = numeric_limits<int>::min(); // Track the highest age
+    int lowestAge = numeric_limits<int>::max();  // Track the lowest age
+
+    // Display instructions to the user
+    cout << "Welcome to the Mr Inan's hospital patient age histogram generator!\n";
+    cout << "Please enter the ages of outpatients (0-109).\n";
+    cout << "Enter an age greater than 109 to stop Mr Inan's generator.\n\n";
+
+    // Input loop: Read ages until an age > 109 is entered
+    while (true) {
+        cout << "Enter age for outpatient " << (totalCount + 1) << ": ";
+        cin >> age;
+
+        // Stop if age exceeds 109
+        if (age > 109) {
+            cout << "Age entry stopped.\n";
+            break;
+        }
+
+        // Validate the input: Only accept non-negative ages
+        if (age < 0) {
+            cout << "Age is invalid! Please enter a non-negative value.\n";
+            continue;
+        }
+
+        // Update statistics
+        totalCount++;
+        if (age < 40) below40Count++; // Count patients below 40
+        if (age > highestAge) highestAge = age; // Update highest age
+        if (age < lowestAge) lowestAge = age;   // Update lowest age
+
+        // Add the appropriate counter based on the age range
+        for (int i = 0; i < 5; i++) {
+            if (age >= ageRanges[i][0] && age <= ageRanges[i][1]) {
+                ageCounters[i]++;
+                break;
+            }
+        }
+    }
+
+    // Output the histogram
+    cout << "\nHere is the histogram of ages:\n";
+    for (int i = 0; i < 5; i++) {
+        // Display the age range
+        cout << setw(5) << ageRanges[i][0] << "-" << setw(3) << ageRanges[i][1] << ": ";
+        // Print the number of exclamation marks
+        for (int j = 0; j < ageCounters[i]; j++) {
+            cout << "!";
+        }
+        cout << endl; // Move to the next line after printing all '!' for this range
+    }
+
+    // Display the statistics
+    cout << "\nStatistics:\n";
+    cout << "Total number of outpatients: " << totalCount << endl;
+    cout << "Total number of patients below the age of 40: " << below40Count << endl;
+    if (totalCount > 0) { // Ensure we have valid input to compute these
+        cout << "Highest age of patients: " << highestAge << endl;
+        cout << "Lowest age of patients: " << lowestAge << endl;
+    }
+    else {
+        cout << "No valid ages were entered.\n";
+    }
+
+    cout << "Thank you for using the program!\n";
+
+    return 0;
+}
+
+
+
+Task 3 Inan Zzaman W20886680:
+
+//TASK 3
+#include <iostream>
+#include <vector>
+#include <iomanip> // For formatting output
+#include <limits>  // For numeric limits
+using namespace std;
+
+int main() {
+    // Specify the age ranges and counters for each group
+    const int ageRanges[5][2] = {
+        {0, 19},   // 0-19 years
+        {20, 39},  // 20-39 years
+        {40, 69},  // 40-69 years
+        {70, 89},  // 70-89 years
+        {90, 109}  // 90-109 years
+    };
+    int ageCounters[5] = { 0, 0, 0, 0, 0 }; // Format all counters to zero
+
+    int age;              // Variable to store user input
+    int totalCount = 0;   // Count of total ages entered
+    int below40Count = 0; // Count of patients below the age of 40
+    int highestAge = numeric_limits<int>::min(); // Track the highest age
+    int lowestAge = numeric_limits<int>::max();  // Track the lowest age
+
+    // Display instructions to the user
+    cout << "Welcome to the Mr Inan's hospital patient age histogram generator!\n";
+    cout << "Please enter the ages of outpatients (0-109).\n";
+    cout << "Enter an age greater than 109 to stop Mr Inan's generator.\n\n";
+
+    // Input loop: Read ages until an age > 109 is entered
+    while (true) {
+        cout << "Enter age for outpatient " << (totalCount + 1) << ": ";
+        cin >> age;
+
+        // Stop if age exceeds 109
+        if (age > 109) {
+            cout << "Age entry stopped.\n";
+            break;
+        }
+
+        // Validate input: Only accept non-negative ages
+        if (age < 0) {
+            cout << "Age is invalid! Please enter a non-negative value.\n";
+            continue;
+        }
+
+        // Update statistics
+        totalCount++;
+        if (age < 40) below40Count++; // Count patients below 40
+        if (age > highestAge) highestAge = age; // Update highest age
+        if (age < lowestAge) lowestAge = age;   // Update lowest age
+
+        // Add the appropriate counter based on the age range
+        for (int i = 0; i < 5; i++) {
+            if (age >= ageRanges[i][0] && age <= ageRanges[i][1]) {
+                ageCounters[i]++;
+                break;
+            }
+        }
+    }
+
+    // Calculate the maximum count to determine the histogram height
+    int maxCount = 0;
+    for (int i = 0; i < 5; i++) {
+        if (ageCounters[i] > maxCount) {
+            maxCount = ageCounters[i];
+        }
+    }
+
+    // Display the vertical histogram
+    cout << "\nVertical Histogram of Ages:\n";
+
+    // Print rows from the top (maxCount) to the bottom (1)
+    for (int row = maxCount; row > 0; row--) {
+        for (int i = 0; i < 5; i++) {
+            if (ageCounters[i] >= row) {
+                cout << "  !  "; // Print an exclamation mark if this row is within range
+            }
+            else {
+                cout << "     "; // Print spaces if no exclamation mark in this row
+            }
+        }
+        cout << endl; // Move to the next row
+    }
+
+    // Print the age range labels below the histogram
+    for (int i = 0; i < 5; i++) {
+        cout << setw(5) << ageRanges[i][0] << "-" << setw(3) << ageRanges[i][1] << " ";
+    }
+    cout << endl;
+
+    // Display the statistics
+    cout << "\nStatistics:\n";
+    cout << "Total number of outpatients: " << totalCount << endl;
+    cout << "Total number of patients below the age of 40: " << below40Count << endl;
+    if (totalCount > 0) { // Ensure we have valid input to add these
+        cout << "Highest age of patients: " << highestAge << endl;
+        cout << "Lowest age of patients: " << lowestAge << endl;
+    }
+    else {
+        cout << "No valid ages were entered.\n";
+    }
+
+    cout << "Thank you for using the Mr Inan's hospital patient program!\n";
+
+    return 0;
+}
+
+
+
