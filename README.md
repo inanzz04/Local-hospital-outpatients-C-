@@ -2,6 +2,7 @@ The local hospital allows outpatients to take a blood test and it wants to make 
 display (histogram) to show how many patients took the test in various age groups in a day. You are
 required to write a program in C++ that achieves this. The program consists of the following three
 tasks:
+
 Task 1: The program should allow the hospital administrator to enter the age of each outpatient
 who visited the hospital for a blood test on a particular day (assuming that only one visit per
 day is allowed), until the administrator enters the age exceeding 109.
@@ -23,9 +24,11 @@ You should use five groups only: 0-19,20-39,40-69,70-89,90-109 for age
 range
 • Make sure the display is neatly formatted as in the example output above.
 • Your program should make use of ‘loops’ for the display of each age group.
+
 Task 2: After the histogram, a variety of statistics should be displayed such as: total number of
 outpatients visited in a day, total number of patients in a day who are below the age of 40,
 the highest and the lowest age of patients visited the hospital in a day.
+
 Task 3: According to task 1, the histogram shows each age group horizontally across the screen.
 Now change your solution to display the histogram vertically.
 Copy your original solution, rename it and make changes to the new solution to display the
